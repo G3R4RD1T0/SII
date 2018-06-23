@@ -16,35 +16,49 @@
 5. Presupuesto (financiado)
 -->
 
-  @foreach($validacion as $rubro)
-    <div  class='alert {{$rubro["resultado"]}}'>
-       <strong>{{$rubro["categoria"]}} </strong>
-             <p>
+  <div id="accordion0">
+    @foreach($validacion as $rubro)
+      <div class="card">
+        <div class='card-header {{$rubro["resultado"]}}' id="heading{{$loop->index}}">
+          
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{$loop->index}}" aria-expanded="true" aria-controls="collapse{{$loop->index}}">
+              {{$rubro["categoria"]}}
+            </button>
+          
+        </div>
+        <div id="collapse{{$loop->index}}" class='collapse {{$rubro["resultado"]}}' aria-labelledby="heading{{$loop->index}}" data-parent="#accordion0">
+          <div class="card-body">
+            {!!$rubro["mensaje"]!!}
+           </div>
+        </div>
+      </div>
+    @endforeach
+  </div>
 
-        {!!$rubro["mensaje"]!!}
-      </p>
-    </div>
-  @endforeach
  @if($puede==true)
     <form method="post" action="{{action('Investigador\SometerController@update', $proyecto->id)}}">  
       {{ csrf_field() }}
-      <div class="row">
         <button type="submit" class="btn btn-success" value="Submit">Someter</button>
-      </div>
     </form>
     @endif
-   </div>
+</div>
+
+
+
 @endsection
 
 @section('sctipts')
 <script src="{{asset('js/vinculacion.js')}}"></script>
 <script language="javascript">
   $(document).ready(function(){
-    $("#frmvinculacion").on("click", ".btndel" , function (e){
+/* 
+   $("#frmvinculacion").on("click", ".btndel" , function (e){
       e.preventDefault(); 
       eliminar( this.value );
     });
     $('#archivo').on('change', agregar);
+
+*/
   });       
 </script>
 @endsection

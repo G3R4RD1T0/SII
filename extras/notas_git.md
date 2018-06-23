@@ -56,3 +56,10 @@ Subir cambios al servidor, sube a remoto/rama_remota desde local/"rama en la que
 $ git push <remote> <rama_remota> 
 ```
 
+
+Subir cambios al servidor, sube a remoto/rama_remota desde local/"rama en la que este", si <rama_remota> no existe la crea
+
+``` 
+$ git diff <archivo> 
+```
+

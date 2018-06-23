@@ -156,8 +156,10 @@ id, actividad, fecha_inicio, fecha_fin, monto, proyecto_id, entregables_id
                             <ol class="dropdown-menu text-left">
                               <li><a href="#">CR-01</a></li>
                               <li><a href="#">CR-02</a></li>
+                              @if($proyecto['vinculacion'] != "")
                               <li><a href="#">Vinculacion</a></li>
-                              <li><a href="{{action('Investigador\SometerController@someter', $proyecto['id'])}}">7. Someter</a></li>
+                              @endif
+                              <!-- <li><a href="{{action('Investigador\SometerController@someter', $proyecto['id'])}}">7. Someter</a></li> -->
                             </ol>
                           </div>
                           @if($colaborador->participacion==0 && $proyecto->sometido == "")

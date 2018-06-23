@@ -38,6 +38,18 @@ class Proyecto extends Model
 	    return $this->hasMany('App\Models\Colaboradores');
 	}        
 
+
+	public function entregables()
+	{
+	    return $this->hasMany('App\Models\Entregables');
+	}        
+
+	public function gastos()
+	{
+	    return $this->hasMany('App\Models\Gastos');
+	}        
+
+
 	public function actividades()
 	{
 	    return $this->hasMany('App\Models\Cronograma');
